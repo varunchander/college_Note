@@ -1,0 +1,10 @@
+#login,#register{
+	margin:70px;
+}
+body {
+	background: url(../images/bg-body.jpg) repeat;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	margin: 0;
+	padding: 0;
+}
