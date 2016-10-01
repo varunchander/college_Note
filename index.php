@@ -29,12 +29,12 @@ session_start();
 				<a href="contact.php">contact</a>
 			</li> 
 			<?php 
-			if(!isset($_SESSION['username'])){
+			if(!(isset($_SESSION['username']) || isset($_SESSION['admin']))){
 			echo "<li><a href='login.html'>login</a></li>"; // admin by user check
 			echo "<li><a href='register.html'>register</a></li>";
 			}
 			?>
-			<?php if(isset($_SESSION['username'])){
+			<?php if(isset($_SESSION['username']) || isset($_SESSION['admin'])){
 			echo "<li><a href='papers.html'>papers</a></li>";
 			echo "<li><a href='logout.php'>logout</li>";
 			}
