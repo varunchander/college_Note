@@ -5,6 +5,11 @@
 	<meta charset="UTF-8">
 	<title>Calendar - Academy Website Template</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+
 </head>
 <body>
 	<div id="header">
@@ -20,7 +25,7 @@
 				<a href="programs.html">programs</a>
 			</li>
 			<li class="selected">
-				<a href="calendar.html">calendar</a>
+				<a href="calendar.php">calendar</a>
 			</li>
 			<li>
 				<a href="contact.html">contact</a>
@@ -28,7 +33,6 @@
 			<li>
 				<a href="login.html">login</a>
 			</li>
-
 			<li>
 				<a href="register.html">register</a>
 			</li>
@@ -40,7 +44,7 @@
 			<?php if(isset($admin)){
 				echo "<div class='container' name='cont'><form role='form' method='post' action=bloguser.php >";
 				echo "<div class='form-group'><div class='col-sm-offset-2 col-sm-10'>";
-				echo "<button type='submit' name='addblog' style='position:absolute;right:-2px;top:-20px;' value='Add_Blog' class='btn 	btn-default'>ADD_BLOG</button>";
+				echo "<button type='submit' name='addblog' style='position:absolute;right:-2px;top:-20px;'value='Add_Blog' class='btn 	btn-default'>ADD_BLOG</button>";
     			echo "</div></div></form></div>";
     			}
     		?>
