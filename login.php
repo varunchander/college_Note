@@ -3,7 +3,7 @@ if(isset($_POST['username'])){
 $username = $_POST['username']; 
 $password = $_POST['password'];
 $admin = 'admin';
-$pass = 'admin';
+$pass = '21232f297a57a5a743894a0e4a801fc3';
 $user = 'root';
 $pwd = '';
 $table = 'register'; // table name
@@ -14,23 +14,22 @@ if(! get_magic_quotes_gpc()){
 $username = addslashes($username);
 $password = addslashes($password);	
 }
-$query = "select * from $table where username='$username' and password='$password'";
+$query = "select * from $table where uname='$username' and pword='$password'";
 $status = mysql_query($query) or die(mysql_error());
 $us = mysql_fetch_array($status);
 session_start();
-if($us["username"] == $username )
+if($us["uname"] == $username )
 {
 	$_SESSION["username"]=$username;
-	header("Location:bloguser.php");
+	header("Location:index.php");
 	echo "Sucessfully logged in ";
-	
 }
 else if ($admin == $username && $pass == $password){
 	$_SESSION["admin"]=$admin;
 	header('Location:index.php');
 }
 else {
-	header('Location:login.php?status=1');
+	header('Location:login.html?status=1&');
 	echo "some problem".mysql_error();
 }
 }

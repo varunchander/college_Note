@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE HTML>
 <!-- Website Template by freewebsitetemplates.com -->
 <html>
@@ -11,31 +14,31 @@
 		<center><p style="font-size:45px;">College Note</p></center>
 		<ul>
 			<li class="selected">
-				<a href="index.html">home</a>
+				<a href="index.php">home</a>
 			</li>
 			<li>
-				<a href="about.html">about</a>
+				<a href="about.php">about</a>
 			</li>
 			<li>
-				<a href="programs.html">programs</a>
+				<a href="programs.php">programs</a>
 			</li>
 			<li>
-				<a href="calendar.html">calendar</a>
+				<a href="calendar.php">calendar</a>
 			</li>
 			<li>
-				<a href="contact.html">contact</a>
-			</li>
-			<li>
-				<a href="login.html">login</a>
-			</li>
-
-			<li>
-				<a href="register.html">register</a>
-			</li>
-			
-			<li>
-				<a href="papers.html">papers</a>
-				</li>
+				<a href="contact.php">contact</a>
+			</li> 
+			<?php 
+			if(!isset($_SESSION['username'])){
+			echo "<li><a href='login.html'>login</a></li>"; // admin by user check
+			echo "<li><a href='register.html'>register</a></li>";
+			}
+			?>
+			<?php if(isset($_SESSION['username'])){
+			echo "<li><a href='papers.html'>papers</a></li>";
+			echo "<li><a href='logout.php'>logout</li>";
+			}
+			?>
 		</ul>
 	</div>
 	<div id="body">

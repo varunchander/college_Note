@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE HTML>
 <!-- Website Template by freewebsitetemplates.com -->
 <html>
@@ -16,35 +19,41 @@
 		<center><p style="font-size:45px;">College Note</p></center>
 		<ul>
 			<li>
-				<a href="index.html">home</a>
+				<a href="index.php">home</a>
 			</li>
 			<li>
-				<a href="about.html">about</a>
+				<a href="about.php">about</a>
 			</li>
 			<li>
-				<a href="programs.html">programs</a>
+				<a href="programs.php">programs</a>
 			</li>
 			<li class="selected">
 				<a href="calendar.php">calendar</a>
 			</li>
 			<li>
-				<a href="contact.html">contact</a>
+				<a href="contact.php">contact</a>
 			</li>
-			<li>
-				<a href="login.html">login</a>
-			</li>
-			<li>
-				<a href="register.html">register</a>
-			</li>
+			<?php 
+			if(!(isset($_SESSION['username']) || isset($_SESSION['admin']))) {
+			echo "<li><a href='login.html'>login</a></li>"; // admin by user check
+			echo "<li><a href='register.html'>register</a></li>";
+			}
+
+			?>
+			<?php if(isset($_SESSION['username']) || isset($_SESSION['admin'])){
+			echo "<li><a href='papers.html'>papers</a></li>";
+			echo "<li><a href='logout.php'>logout</li>";
+			}
+			?>
 		</ul>
 	</div>
 	<div id="body">
 		<div class="content">
 			<h3>Calendar 2012: This is just a place holder.</h3>
-			<?php if(isset($admin)){
+			<?php if(isset($_SESSION['admin'])){
 				echo "<div class='container' name='cont'><form role='form' method='post' action=bloguser.php >";
-				echo "<div class='form-group'><div class='col-sm-offset-2 col-sm-10'>";
-				echo "<button type='submit' name='addblog' style='position:absolute;right:-2px;top:-20px;'value='Add_Blog' class='btn 	btn-default'>ADD_BLOG</button>";
+				echo "<div class='form-group'><div class='col-sm-offset-6 col-sm-9'>";
+				echo "<button type='submit' name='addblog' style='position:absolute;right:-2px;top:-20px;'value='Add_Blog' class='btn 	btn-default'>ADD_NOTIFICATION</button>";
     			echo "</div></div></form></div>";
     			}
     		?>
