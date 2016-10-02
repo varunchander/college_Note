@@ -1,7 +1,59 @@
 <?php
-session_start();
+session_start(); // php file for entering the content
+if(!$_SESSION['username']){header('Location:index.php');}
+if(isset($_SESSION["username"]) && isset($_POST["notify_detail"])){
+	$uname = $_SESSION["username"];
+	$desc=$_POST["notify_detail"];
+	$btitle=$_POST["notify_title"];
+	$tablem ='notify_img'; // table for notify entry
+	$table = 'register';
 
+	$user ='root';
+	$pwd = '';
+	$db1=mysql_connect('localhost',$user,$pwd) or die('unable to connect to database');
+	mysql_select_db('co_blog_reg') or die('unable to find db');
 
+	$authid = "select * from register where uname='$uname'";
+	$status = mysql_query($authid) or die(mysql_error());
+	$result = mysql_fetch_array($status);
+	$id = $result["ID"]; // retriving the id of user
+
+	$btime = date("Y-m-d");
+
+	$allowed =  array('gif','png','jpg');//check file extensions
+	$filename = $_FILES['myfile']['name'];
+	$filename = strtolower($filename);
+	$ext = pathinfo($filename, PATHINFO_EXTENSION);
+	if(!in_array($ext,$allowed) ) {
+    echo 'error';
+    header('Location:notification_entry.php?error=1');
+	}
+	if(! get_magic_quotes_gpc()){
+	$desc = addslashes($desc);
+	$btitle = addslashes($btitle);
+	}
+
+	// img checks
+	if( getimagesize($_FILES["myfile"]["tmp_name"]) != false) {
+	$image=addslashes($_FILES['myfile']['tmp_name']);
+	$image=file_get_contents($image);
+	$image=base64_encode($image);
+	$blogentry = "insert into $tablem(id,name,image,title,detail,blogger_id,time) values (
+	0,'$uname','$image','$btitle','$desc','$id','$btime')";
+	$que=mysql_query($blogentry);
+	if($que){
+		header('Location: calendar.php')
+	}
+	else {
+		header('Location:notification_entry.php?error=2')
+	}
+
+	}
+	else{
+		header('Location: notification_entry.php?error=2');
+	}
+
+}
 ?>
 <!DOCTYPE HTML>
 <!-- Website Template by freewebsitetemplates.com -->
@@ -63,7 +115,7 @@ session_start();
 	<br>
 	<br>
       <!-- Standard Select -->
-     <input type='file' name='myfile' onsubmit="" required><p id='notify'></p><br>
+     <input type='file' name='myfile' required><p id='notify'></p><br>
 	<div class="form-group">
       <label for="comment" >Details:</label>
       <textarea class="form-control" name="notify_detail" rows="5" id="detils" required></textarea>

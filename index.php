@@ -88,9 +88,26 @@ session_start();
 			<div class="article">
 				<h3><a href="">calendar</a></h3>
 				<ul>
+					<?php
+						$months = array("jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec");
+						$user = 'root';
+						$pwd = '';
+						$table = 'notify_img'; // table name
+						$db1=mysql_connect('localhost',$user,$pwd) or die('unable to connect to database');
+						mysql_select_db('co_blog_reg') or die(mysql_error());
+						$query = "select * from notify_img order by time desc limit 3";
+						$result = mysql_query($query) or die(mysql_error());
+						while($row = mysql_fetch_array($result)){
+							$timer = $row['time'];
+							$timer = explode("-", $timer);
+							echo "<li><div><span><b>".$timer[2]."</b> ". $months[$timer[1]]."</span></div>";
+							echo "<p><a href='calendar.php'>".$row['detail']."</a></p>";
+							echo "</li>";
+						}
+					?>
 					<li>
 						<div>
-							<span><b>4</b> jul</span>
+							<span><b>4</b> fjul</span>
 						</div>
 						<p>
 							<a href="calendar.html">This is just a place holder, so you can see what the site would look like. by: Rose</a>

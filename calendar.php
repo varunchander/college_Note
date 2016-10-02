@@ -50,7 +50,8 @@ session_start();
 	<div id="body">
 		<div class="content">
 			<h3>Calendar 2012: This is just a place holder.</h3>
-			<?php if(isset($_SESSION['admin'])){
+			<?php 
+				if(isset($_SESSION['admin']) || isset($_SESSION['username'])){
 				echo "<div class='container' name='cont'><form role='form' method='post' action=notification_entry.php >";
 				echo "<div class='form-group'><div class='col-sm-offset-6 col-sm-9'>";
 				echo "<button type='submit' name='addblog' style='position:absolute;right:-2px;top:-20px;'value='Add_Blog' class='btn 	btn-default'>ADD_NOTIFICATION</button>";
