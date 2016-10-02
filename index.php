@@ -36,7 +36,7 @@ session_start();
 			?>
 			<?php if(isset($_SESSION['username']) || isset($_SESSION['admin'])){
 			echo "<li><a href='papers.html'>papers</a></li>";
-			echo "<li><a href='logout.php'>logout</li>";
+			echo "<li><a href='logout.php'>logout</a></li>";
 			}
 			?>
 		</ul>
@@ -44,26 +44,29 @@ session_start();
 	<div id="body">
 		<div class="header">
 			<ul>
-				<li>
-					<img src="images/programs.jpg" alt=""> <a href="programs.html"><b>programs</b><span>This is just a place holder</span></a>
-				</li>
-				<li>
-					<img src="images/football.jpg" alt=""> <a href="programs.html"><b>football</b><span>This is just a place holder</span></a>
-				</li>
-				<li>
-					<img src="images/air-show.jpg" alt=""> <a href="programs.html"><b>air show event</b><span>This is just a place holder</span></a>
-				</li>
+				<?php
+				$user = 'root';
+				$pwd = '';
+				$db1=mysql_connect('localhost',$user,$pwd) or die('unable to connect to database');
+				mysql_select_db('co_blog_reg') or die(mysql_error());
+				$query = "select * from notify_img order by time limit 3";
+				$result = mysql_query($query);
+				while($row = mysql_fetch_array($result)){
+				$img_id = $row["id"];
+				echo "<li>";
+				?>
+				 <img id="img_call" src="img.php?id=<?php echo $img_id ?>" />
+				<?php
+				echo "<a href='#'><b>".$row['title']."</b><span>Click to check the content</span></a></li>";	
+				}
+				?>
+			
+				
 			</ul>
 		</div>
-		<div class="body">
-			<div>
-				<h3>Military &amp; Navy training experts</h3>
-				<h1>academy</h1>
-				<p>
-					This website template has been designed by <a href="http://www.freewebsitetemplates.com">Free Website Templates</a> for you, for free. You can replace all this text with your own text.
-				</p>
-			</div>
-		</div>
+		<a href='#'><div class="body">
+			
+		</div></a>
 		<div class="footer">
 			<div class="blog">
 				<h3><a href="">blog</a></h3>
@@ -90,11 +93,6 @@ session_start();
 				<ul>
 					<?php
 						$months = array("jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec");
-						$user = 'root';
-						$pwd = '';
-						$table = 'notify_img'; // table name
-						$db1=mysql_connect('localhost',$user,$pwd) or die('unable to connect to database');
-						mysql_select_db('co_blog_reg') or die(mysql_error());
 						$query = "select * from notify_img order by time desc limit 3";
 						$result = mysql_query($query) or die(mysql_error());
 						while($row = mysql_fetch_array($result)){
@@ -137,13 +135,13 @@ session_start();
 		<div>
 			<ul>
 				<li class="twitter">
-					<a href="http://freewebsitetemplates.com/go/twitter/">twitter</a>
+					<a href="#">twitter</a>
 				</li>
 				<li class="facebook">
-					<a href="http://freewebsitetemplates.com/go/facebook/">facebook</a>
+					<a href="#">facebook</a>
 				</li>
 				<li class="googleplus">
-					<a href="http://freewebsitetemplates.com/go/googleplus/">googleplus</a>
+					<a href="#">googleplus</a>
 				</li>
 			</ul>
 			<p>

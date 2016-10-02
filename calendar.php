@@ -59,26 +59,28 @@ session_start();
     			}
     		?>
 			<ul class="article">
-				<li>
-					<a href="#" class="figure"><img src="images/combat-training.jpg" alt=""></a>
-					<div>
-						<h3>combat training</h3>
-						<p>
-							This website template has been designed by freewebsitetemplates.com for you, for free. You can replace all this text with your own text. You can remove any link to our website from this website template, you're free to use this website template without linking back to us. If you're having problems editing this website template, then don't hesitate to ask for help on the <a href="http://www.freewebsitetemplates.com/forums/">forums</a>.
-						</p>
-						<span><b>date</b>: February 1-20, 2012</span> <span><b>Venue</b>: Combat Training location</span>
-					</div>
-				</li>
-				<li>
-					<a href="#" class="figure"><img src="images/graduation.jpg" alt=""></a>
-					<div>
-						<h3>2012 gradutaion</h3>
-						<p>
-							You can remove any link to our website from this website template, you're free to use this website template without linking back to us. You can remove any link to our website from this website template, you're free to use this website template without linking back to us.You can remove any link to our website from this website template, you're free to use this website template without linking back to us.
-						</p>
-						<span><b>date</b>: March 28, 2012</span> <span><b>Venue</b>: Graduation Area</span>
-					</div>
-				</li>
+				<?php
+				$months = array("January","February","March","April","May","June","July","August","September","October","November","December");
+				$user = 'root';
+				$pwd = '';
+				$db1=mysql_connect('localhost',$user,$pwd) or die('unable to connect to database');
+				mysql_select_db('co_blog_reg') or die(mysql_error());
+				$query = "select * from notify_img order by time limit 3";
+				$result = mysql_query($query);
+				while($row = mysql_fetch_array($result)){
+					$img_id = $row["id"];
+					echo "<li><a href='#' class='figure'>";
+				?>
+				 <img id="img_call1" src="img.php?id=<?php echo $img_id ?>" />
+				<?php
+				$timer = $row['event_date'];
+				$timer = explode("-", $timer);
+				echo "</a><div><h3>".$row['title']."</h3><p>".$row['detail']."</p><span><b>date</b>: ".$months[$timer[1]]." ".$timer[2].",".$timer[0]." </span>";
+				echo "<span><b>Venue</b>: ".strtoupper($row['venue'])."</span>";
+				echo "</div></li>";
+				}
+				?>
+			
 				<li>
 					<a href="#" class="figure"><img src="images/air-show-event.jpg" alt=""></a>
 					<div>

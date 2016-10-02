@@ -6,6 +6,14 @@ body {
 	margin: 0;
 	padding: 0;
 }
+#img_call{
+	height: 380px;
+	width: 280px;
+}
+#img_call1{
+	height: 280px;
+	width: 290px;
+}
 #header {
 	background: url(../images/bg-header.png) repeat-x bottom center;
 	margin: 0;
@@ -119,7 +127,7 @@ body {
 	padding: 0 12px 0 0;
 }
 #body .body {
-	background: url(../images/bg-section.jpg) no-repeat;
+	background: url(../images/nit_surat.png) no-repeat;
 	height: 258px;
 	margin: 60px auto 44px;
 	padding: 0;

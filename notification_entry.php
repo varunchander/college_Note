@@ -5,6 +5,9 @@ if(isset($_SESSION["username"]) && isset($_POST["notify_detail"])){
 	$uname = $_SESSION["username"];
 	$desc=$_POST["notify_detail"];
 	$btitle=$_POST["notify_title"];
+	$venue=$_POST["event_venue"];
+	$venue_dat=$_POST["event_date"];
+
 	$tablem ='notify_img'; // table for notify entry
 	$table = 'register';
 
@@ -38,19 +41,19 @@ if(isset($_SESSION["username"]) && isset($_POST["notify_detail"])){
 	$image=addslashes($_FILES['myfile']['tmp_name']);
 	$image=file_get_contents($image);
 	$image=base64_encode($image);
-	$blogentry = "insert into $tablem(id,name,image,title,detail,blogger_id,time) values (
-	0,'$uname','$image','$btitle','$desc','$id','$btime')";
+	$blogentry = "insert into $tablem(id,name,image,title,detail,blogger_id,time,venue,event_date) values (
+	0,'$uname','$image','$btitle','$desc','$id','$btime','$venue','$venue_dat')";
 	$que=mysql_query($blogentry);
 	if($que){
-		header('Location: calendar.php')
+		header('Location: calendar.php');
 	}
 	else {
-		header('Location:notification_entry.php?error=2')
+		header('Location:notification_entry.php?error=2');
 	}
 
 	}
 	else{
-		header('Location: notification_entry.php?error=2');
+		header('Location: notification_entry.php?error=3');
 	}
 
 }
@@ -66,7 +69,11 @@ if(isset($_SESSION["username"]) && isset($_POST["notify_detail"])){
   	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
-
+<style>
+body{
+	color: white;
+}
+</style>
 </head>
 <body>
 	<div id="header">
@@ -108,6 +115,18 @@ if(isset($_SESSION["username"]) && isset($_POST["notify_detail"])){
       <label class="control-label col-sm-2" >Notification_Title:</label>
       <div class="col-sm-4">
         <input type="text" class="form-control" name="notify_title" placeholder="Notification_Title" required>
+      </div>
+    </div><br><br><br><br>
+    <div class="form-group">
+      <label class="control-label col-sm-2" >Event_Venue:</label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" name="event_venue" placeholder="Event_Venue" required>
+      </div>
+    </div><br><br><br><br>
+    <div class="form-group">
+      <label class="control-label col-sm-2" >Event_Date:</label>
+      <div class="col-sm-4">
+        <input type="date" class="form-control" name="event_date" placeholder="Event_Date" required>
       </div>
     </div>
 	<br>
