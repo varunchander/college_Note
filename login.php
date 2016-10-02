@@ -17,10 +17,12 @@ $password = addslashes($password);
 $query = "select * from $table where uname='$username' and pword='$password'";
 $status = mysql_query($query) or die(mysql_error());
 $us = mysql_fetch_array($status);
+$permit_status = $us['permit'];
 session_start();
 if($us["uname"] == $username )
 {
 	$_SESSION["username"]=$username;
+	$_SESSION['permit'] = $permit_status;
 	header("Location:index.php");
 	echo "Sucessfully logged in ";
 }

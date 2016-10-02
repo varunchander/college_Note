@@ -2,11 +2,9 @@
 session_start();
 ?>
 <!DOCTYPE HTML>
-<!-- Website Template by freewebsitetemplates.com -->
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>About - Academy Website Template</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
@@ -25,10 +23,14 @@ session_start();
 			<li>
 				<a href="calendar.php">calendar</a>
 			</li>
-			<li>
-				<a href="contact.php">contact</a>
-			</li>
-			<?php 
+			<?php
+			if(isset($_SESSION['admin'])){
+			echo "<li><a href='admin.php'>status</a></li>";
+			}
+			else{
+			echo "<li><a href='contact.php'>contact</a></li>";
+			}
+			 
 			if(!(isset($_SESSION['username']) || isset($_SESSION['admin']))){
 			echo "<li><a href='login.html'>login</a></li>"; // admin by user check
 			echo "<li><a href='register.html'>register</a></li>";
@@ -36,7 +38,7 @@ session_start();
 			?>
 			<?php if(isset($_SESSION['username']) || isset($_SESSION['admin'])){
 			echo "<li><a href='papers.html'>papers</a></li>";
-			echo "<li><a href='logout.php'>logout</li>";
+			echo "<li><a href='logout.php'>logout</a></li>";
 			}
 			?>
 		</ul>

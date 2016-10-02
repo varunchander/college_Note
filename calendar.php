@@ -2,7 +2,6 @@
 session_start();
 ?>
 <!DOCTYPE HTML>
-<!-- Website Template by freewebsitetemplates.com -->
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -30,10 +29,14 @@ session_start();
 			<li class="selected">
 				<a href="calendar.php">calendar</a>
 			</li>
-			<li>
-				<a href="contact.php">contact</a>
-			</li>
-			<?php 
+			<?php
+			if(isset($_SESSION['admin'])){
+			echo "<li><a href='admin.php'>status</a></li>";
+			}
+			else{
+			echo "<li><a href='contact.php'>contact</a></li>";
+			}
+
 			if(!(isset($_SESSION['username']) || isset($_SESSION['admin']))) {
 			echo "<li><a href='login.html'>login</a></li>"; // admin by user check
 			echo "<li><a href='register.html'>register</a></li>";
@@ -52,10 +55,12 @@ session_start();
 			<h3>Calendar 2012: This is just a place holder.</h3>
 			<?php 
 				if(isset($_SESSION['admin']) || isset($_SESSION['username'])){
+				if(isset($_SESSION['permit'])){
 				echo "<div class='container' name='cont'><form role='form' method='post' action=notification_entry.php >";
 				echo "<div class='form-group'><div class='col-sm-offset-6 col-sm-9'>";
 				echo "<button type='submit' name='addblog' style='position:absolute;right:-2px;top:-20px;'value='Add_Blog' class='btn 	btn-default'>ADD_NOTIFICATION</button>";
     			echo "</div></div></form></div>";
+    			}
     			}
     		?>
 			<ul class="article">

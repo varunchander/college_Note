@@ -2,7 +2,6 @@
 session_start();
 ?>
 <!DOCTYPE HTML>
-<!-- Website Template by freewebsitetemplates.com -->
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -25,10 +24,13 @@ session_start();
 			<li>
 				<a href="calendar.php">calendar</a>
 			</li>
-			<li>
-				<a href="contact.php">contact</a>
-			</li> 
 			<?php 
+			if(isset($_SESSION['admin'])){
+			echo "<li><a href='admin.php'>status</a></li>";
+			}
+			else{
+			echo "<li><a href='contact.php'>contact</a></li>";
+			}
 			if(!(isset($_SESSION['username']) || isset($_SESSION['admin']))){
 			echo "<li><a href='login.html'>login</a></li>"; // admin by user check
 			echo "<li><a href='register.html'>register</a></li>";
