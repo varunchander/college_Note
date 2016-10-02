@@ -10,7 +10,7 @@ session_start();
  	<meta name="viewport" content="width=device-width, initial-scale=1">
   	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+
 
 </head>
 <body>
@@ -70,8 +70,13 @@ session_start();
 				$pwd = '';
 				$db1=mysql_connect('localhost',$user,$pwd) or die('unable to connect to database');
 				mysql_select_db('co_blog_reg') or die(mysql_error());
-				$query = "select * from notify_img order by time limit 3";
-				$result = mysql_query($query);
+				if(isset($_GET['step'])){
+					$off = 3*$_GET['step'];
+				}else{
+					$off = 0;
+				}
+				$query = "select * from notify_img order by time limit 2 offset $off";
+				$result = mysql_query($query) or die(mysql_error());
 				while($row = mysql_fetch_array($result)){
 					$img_id = $row["id"];
 					echo "<li><a href='#' class='figure'>";
@@ -97,6 +102,16 @@ session_start();
 					</div>
 				</li>
 			</ul>
+		</div>
+		<div class="container">
+			  	<center><ul class="pagination">
+    			<li><a href="calendar.php?step=0">1</a></li>
+    			<li><a href="calendar.php?step=1">2</a></li>
+    			<li><a href="calendar.php?step=2">3</a></li>
+   				<li><a href="calendar.php?step=3">4</a></li>
+    			<li><a href="calendar.php?step=4">5</a></li>
+  				</ul>
+  				</center>
 		</div>
 	</div>
 	<div id="footer">

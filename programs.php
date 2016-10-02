@@ -51,15 +51,10 @@ session_start();
 			<p>
 				This website template has been designed by freewebsitetemplates.com for you, for free. You can replace all this text with your own text. You can remove any link to our website from this website template, you're free to use this website template without linking back to us. If you're having problems editing this website template, then don't hesitate to ask for help on the <a href="http://www.freewebsitetemplates.com/forums/">forums</a>.
 			</p>
+			<a href='#'>
 			<div class="body">
-				<div>
-					<h3>Military &amp; Navy training experts</h3>
-					<h1>academy</h1>
-					<p>
-						This website template has been designed by <a href="http://www.freewebsitetemplates.com">Free Website Templates</a> for you, for free. You can replace all this text with your own text.
-					</p>
-				</div>
 			</div>
+			</a>
 			<div class="section">
 				<p>
 					<b>We Have Free Templates for Everyone.</b> Our website templates are created with inspiration, checked for quality and originality and meticulously sliced and coded. What’s more, they’re absolutely free! You can do a lot with them. You can modify them. You can use them to design websites for clients, so long as you agree with the <a href="http://www.freewebsitetemplates.com/about/terms">Terms of Use</a>. You can even remove all our links if you want to.

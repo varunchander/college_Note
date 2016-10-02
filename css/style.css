@@ -11,7 +11,7 @@ body {
 	width: 280px;
 }
 #img_call1{
-	height: 280px;
+	height: 265px;
 	width: 290px;
 }
 #header {
@@ -343,7 +343,7 @@ body {
 	color: #403721;
 }
 #body .content .body {
-	background: url(../images/bg-section.jpg) no-repeat;
+	background: url(../images/nit_surat.png) no-repeat;
 	height: 258px;
 	margin: 40px auto;
 	padding: 0;

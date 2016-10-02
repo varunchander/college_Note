@@ -75,17 +75,17 @@ session_start();
 				<ul>
 					<li>
 						<p>
-							<a href="blog.html">This is just a place holder, so you can see what the site would look like. by: Rose</a>
+							<a href="calendar.html">This is just a place holder, so you can see what the site would look like. by: Rose</a>
 						</p>
 					</li>
 					<li>
 						<p>
-							<a href="blog.html">This website template has been designed by Free Website Templates for you, for free. by: Rose</a>
+							<a href="calendar.html">This website template has been designed by Free Website Templates for you, for free. by: Rose</a>
 						</p>
 					</li>
 					<li>
 						<p>
-							<a href="blog.html">This is just a place holder, so you can see what the site would look like. by: Rose</a>
+							<a href="calendar.html">This is just a place holder, so you can see what the site would look like. by: Rose</a>
 						</p>
 					</li>
 				</ul>
@@ -105,30 +105,7 @@ session_start();
 							echo "</li>";
 						}
 					?>
-					<li>
-						<div>
-							<span><b>4</b> fjul</span>
-						</div>
-						<p>
-							<a href="calendar.html">This is just a place holder, so you can see what the site would look like. by: Rose</a>
-						</p>
-					</li>
-					<li>
-						<div>
-							<span><b>8</b> jul</span>
-						</div>
-						<p>
-							<a href="calendar.html">This website template has been designed by Free Website Templates for you, for free. by: Rose</a>
-						</p>
-					</li>
-					<li>
-						<div>
-							<span><b>12</b> jul</span>
-						</div>
-						<p>
-							<a href="calendar.html">This is just a place holder, so you can see what the site would look like. by: Rose</a>
-						</p>
-					</li>
+					
 				</ul>
 			</div>
 		</div>
