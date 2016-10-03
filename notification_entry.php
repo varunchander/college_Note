@@ -1,5 +1,6 @@
 <?php
 session_start(); // php file for entering the content
+echo round(microtime(true)*1000);
 if(!$_SESSION['username']){header('Location:index.php');}
 if(isset($_SESSION["username"]) && isset($_POST["notify_detail"])){
 	$uname = $_SESSION["username"];
@@ -41,11 +42,12 @@ if(isset($_SESSION["username"]) && isset($_POST["notify_detail"])){
 	$image=addslashes($_FILES['myfile']['tmp_name']);
 	$image=file_get_contents($image);
 	$image=base64_encode($image);
-	$blogentry = "insert into $tablem(id,name,image,title,detail,blogger_id,time,venue,event_date) values (
-	0,'$uname','$image','$btitle','$desc','$id','$btime','$venue','$venue_dat')";
+	$time_seconds = round(microtime(true)*1000);
+	$blogentry = "insert into $tablem(id,name,image,title,detail,blogger_id,time,venue,event_date,time_sec) values (
+	0,'$uname','$image','$btitle','$desc','$id','$btime','$venue','$venue_dat','$time_seconds')";
 	$que=mysql_query($blogentry);
 	if($que){
-		header('Location: calendar.php');
+		header('Location: calendar.php?timer='.$time_seconds);
 	}
 	else {
 		header('Location:notification_entry.php?error=2');

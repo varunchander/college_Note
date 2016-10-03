@@ -57,7 +57,7 @@ session_start();
 				if(isset($_SESSION['admin']) || isset($_SESSION['username'])){
 				if(isset($_SESSION['permit'])){
 				echo "<div class='container' name='cont'><form role='form' method='post' action=notification_entry.php >";
-				echo "<div class='form-group'><div class='col-sm-offset-6 col-sm-9'>";
+				echo "<div class='form-group'><div class='col-sm-offset-3 col-sm-6'>";
 				echo "<button type='submit' name='addblog' style='position:absolute;right:-2px;top:-20px;'value='Add_Blog' class='btn 	btn-default'>ADD_NOTIFICATION</button>";
     			echo "</div></div></form></div>";
     			}
@@ -75,7 +75,11 @@ session_start();
 				}else{
 					$off = 0;
 				}
-				$query = "select * from notify_img order by time limit 2 offset $off";
+				$query_offset="select count(id) from notify_img";
+				$total_count = mysql_query($query_offset);
+				$val = mysql_fetch_array($total_count);
+				$count_offset = $val[0];
+				$query = "select * from notify_img order by time_sec desc limit 3 offset $off";
 				$result = mysql_query($query) or die(mysql_error());
 				while($row = mysql_fetch_array($result)){
 					$img_id = $row["id"];
@@ -90,26 +94,18 @@ session_start();
 				echo "</div></li>";
 				}
 				?>
-			
-				<li>
-					<a href="#" class="figure"><img src="images/air-show-event.jpg" alt=""></a>
-					<div>
-						<h3>air show event</h3>
-						<p>
-							You can remove any link to our website from this website template, you're free to use this website template without linking back to us. You can remove any link to our website from this website template, you're free to use this website template without linking back to us.You can remove any link to our website from this website template, you're free to use this website template without linking back to us.
-						</p>
-						<span><b>date</b>: July 4, 2012</span> <span><b>Venue</b>: In the Sky & clouds</span>
-					</div>
-				</li>
 			</ul>
 		</div>
 		<div class="container">
 			  	<center><ul class="pagination">
-    			<li><a href="calendar.php?step=0">1</a></li>
-    			<li><a href="calendar.php?step=1">2</a></li>
-    			<li><a href="calendar.php?step=2">3</a></li>
-   				<li><a href="calendar.php?step=3">4</a></li>
-    			<li><a href="calendar.php?step=4">5</a></li>
+			  	<?php
+			  	$counter = 1;
+			  	while($count_offset>0){$count_offset = $count_offset - 3;
+			  	$val = $counter-1;
+			  	echo "<li><a href='calendar.php?step=$val'>$counter</a></li>";
+		  		$counter++;
+			  	}
+			  	?>
   				</ul>
   				</center>
 		</div>

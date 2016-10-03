@@ -51,6 +51,7 @@ session_start();
 				$pwd = '';
 				$db1=mysql_connect('localhost',$user,$pwd) or die('unable to connect to database');
 				mysql_select_db('co_blog_reg') or die(mysql_error());
+				
 				$query = "select * from notify_img order by time limit 3";
 				$result = mysql_query($query);
 				while($row = mysql_fetch_array($result)){
