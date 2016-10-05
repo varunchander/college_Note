@@ -8,7 +8,7 @@ if(isset($_SESSION["username"]) && isset($_POST["notify_detail"])){
 	$btitle=$_POST["notify_title"];
 	$venue=$_POST["event_venue"];
 	$venue_dat=$_POST["event_date"];
-
+	
 	$tablem ='notify_img'; // table for notify entry
 	$table = 'register';
 
