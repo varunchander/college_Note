@@ -1,14 +1,8 @@
 <?php
 $conn = new mysqli("localhost","root","","co_blog_reg");
-$query = "SELECT * FROM upload ";
+$year_id = $_GET['id'];
+$query = "SELECT * FROM upload where year = $year_id ";
 $result = $conn->query($query);
-$i = 1;
-while($row = $result->fetch_assoc()){
-
-echo '<a href="displaypdf.php?id='.$i.'">assignment'.$row['file_id'].'</a>'; 
-echo '<br />';
-$i++;
-}
 ?>
 <!Doctype html>
 
@@ -18,6 +12,7 @@ $i++;
 <head>
 
 	<title>All papers</title>
+
 	
 	  <meta name="viewport" content="width=device-width, initial-scale=1">      
 	  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -32,9 +27,10 @@ $i++;
   <nav>
     <div class="nav-wrapper">
       <div class="col s12">
-        <a href="second.html" class="breadcrumb">Second </a>
-        <a href="third.html" class="breadcrumb">Third</a>
-        <a href="papers.html" class="breadcrumb">Final</a>
+        <a href="papers.php?id=1" class="breadcrumb">First</a>
+        <a href="papers.php?id=2" class="breadcrumb">Second </a>
+        <a href="papers.php?id=3" class="breadcrumb">Third</a>
+        <a href="papers.php?id=4" class="breadcrumb">Final</a>
       </div>
     </div>
   </nav>
@@ -54,10 +50,10 @@ $i++;
 			<ul >        
                   <?php
                   while($row = $result->fetch_assoc()){
-                  echo '<li><a class="grey-text text-lighten-3" href="displaypdf.php?id='.$i.' ">assignment'.$row['file_id'].'</a></li>';
+                  echo '<li><a class="grey-text text-lighten-3" href="displaypdf.php?id='.$row['file_id'].' ">assignment'.$row['file_id'].'</a></li>';
                   //echo '<a href="displaypdf.php?id='.$i.'">assignment'.$row['file_id'].'</a>'; 
                   echo '<br />';
-                  $i++;
+                
                   }    
                   
                   ?>
@@ -75,6 +71,6 @@ $i++;
         </footer>
     
 			
-<a class="waves-effect waves-light btn">Upload Papers</a>
+<a class="waves-effect waves-light btn" href="assignmentupload.php" >Upload Papers</a>
 </body>
 </html>

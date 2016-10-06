@@ -1,5 +1,6 @@
 <?php
 session_start();
+require "nanobar.php";
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -37,11 +38,14 @@ session_start();
 			}
 			?>
 			<?php if(isset($_SESSION['username']) || isset($_SESSION['admin'])){
-			echo "<li><a href='papers.html'>papers</a></li>";
+			echo "<li><a href='papers.php?id=1'>papers</a></li>";
 			echo "<li><a href='logout.php'>logout</a></li>";
 			}
 			?>
 		</ul>
+				<div style="float: right;">
+		<?php require "googlesearch.php"; ?>
+		</div>
 	</div>
 	<div id="body">
 		<div class="header">

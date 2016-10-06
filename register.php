@@ -12,6 +12,7 @@ $lname = $_POST['last_name'];
 $email = $_POST['email'];
 $uname = $_POST['user_name'];
 $pword = $_POST['pass_word'];
+$year = $_POST['year'];
 $pword = md5($pword); // password is 32 bit long hex number hash code for given pword 
 
 if(! get_magic_quotes_gpc()){
@@ -21,11 +22,12 @@ $lname = addslashes($lname);
 $email = addslashes($email);
 $uname = addslashes($uname);
 $pword = addslashes($pword);	
+$year = addslashes($year);
 }
 mysql_select_db('co_blog_reg') or die('unable to find db'); //db
 $user_Check = "select * from $table where uname = '$uname'"; // check for a unique user name
 $reg_time = date("Y-m-d");
-$sql = "INSERT INTO $table(fname,mname,lname,email,uname,pword,created_date) VALUES('$fname','$mname','$lname','$email','$uname','$pword','$reg_time')";
+$sql = "INSERT INTO $table(fname,mname,lname,email,uname,pword,created_date,year) VALUES('$fname','$mname','$lname','$email','$uname','$pword','$reg_time','$year')";
 $user_Check_Status = mysql_query($user_Check) or die('could not connect to table'.mysql_error());
 $val = 1;
 $us = mysql_fetch_array($user_Check_Status);
