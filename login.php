@@ -23,6 +23,7 @@ if($us["uname"] == $username )
 {
 	$_SESSION["username"]=$username;
 	$_SESSION['permit'] = $permit_status;
+	$_SESSION['year'] = $us["year"];
 	header("Location:index.php");
 	echo "Sucessfully logged in ";
 }

@@ -1,6 +1,5 @@
 <?php
 session_start(); // php file for entering the content
-echo round(microtime(true)*1000);
 if(!$_SESSION['username']){header('Location:index.php');}
 if(isset($_SESSION["username"]) && isset($_POST["notify_detail"])){
 	$uname = $_SESSION["username"];
@@ -8,7 +7,6 @@ if(isset($_SESSION["username"]) && isset($_POST["notify_detail"])){
 	$btitle=$_POST["notify_title"];
 	$venue=$_POST["event_venue"];
 	$venue_dat=$_POST["event_date"];
-	
 	$tablem ='notify_img'; // table for notify entry
 	$table = 'register';
 
@@ -30,27 +28,28 @@ if(isset($_SESSION["username"]) && isset($_POST["notify_detail"])){
 	$ext = pathinfo($filename, PATHINFO_EXTENSION);
 	if(!in_array($ext,$allowed) ) {
     echo 'error';
-    header('Location:notification_entry.php?error=1');
+    header('Location:notification_entry.php?error=1'); 	 
 	}
 	if(! get_magic_quotes_gpc()){
 	$desc = addslashes($desc);
 	$btitle = addslashes($btitle);
 	}
-
 	// img checks
 	if( getimagesize($_FILES["myfile"]["tmp_name"]) != false) {
 	$image=addslashes($_FILES['myfile']['tmp_name']);
 	$image=file_get_contents($image);
 	$image=base64_encode($image);
 	$time_seconds = round(microtime(true)*1000);
-	$blogentry = "insert into $tablem(id,name,image,title,detail,blogger_id,time,venue,event_date,time_sec) values (
-	0,'$uname','$image','$btitle','$desc','$id','$btime','$venue','$venue_dat','$time_seconds')";
+	// year from sessions
+	$year = $_SESSION['year'];
+	$blogentry = "insert into $tablem(id,name,image,title,detail,blogger_id,time,venue,event_date,time_sec,year) values (
+	0,'$uname','$image','$btitle','$desc','$id','$btime','$venue','$venue_dat','$time_seconds','$year')";
 	$que=mysql_query($blogentry);
 	if($que){
 		header('Location: calendar.php?timer='.$time_seconds);
 	}
 	else {
-		header('Location:notification_entry.php?error=2');
+		header('Location:notification_entry.php?error=2'.mysql_error());
 	}
 
 	}
@@ -65,7 +64,6 @@ if(isset($_SESSION["username"]) && isset($_POST["notify_detail"])){
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Calendar - Academy Website Template</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
  	<meta name="viewport" content="width=device-width, initial-scale=1">
   	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">

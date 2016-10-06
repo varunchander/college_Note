@@ -27,7 +27,6 @@ session_start();
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Calendar - Academy Website Template</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
  	<meta name="viewport" content="width=device-width, initial-scale=1">
   	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -66,7 +65,7 @@ session_start();
 
 			?>
 			<?php if(isset($_SESSION['username']) || isset($_SESSION['admin'])){
-			echo "<li><a href='papers.html'>papers</a></li>";
+			echo "<li><a href='papers.php?id=1'>papers</a></li>";
 			echo "<li><a href='logout.php'>logout</a></li>";
 			}
 			?>

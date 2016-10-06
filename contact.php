@@ -1,12 +1,13 @@
 <?php
 session_start();
+require "nanobar.php";
 ?>
 <!DOCTYPE HTML>
-<!-- Website Template by freewebsitetemplates.com -->
+
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Contact - Academy Website Template</title>
+
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
@@ -35,8 +36,8 @@ session_start();
 			}
 			?>
 			<?php if(isset($_SESSION['username']) || isset($_SESSION['admin'])){
-			echo "<li><a href='papers.html'>papers</a></li>";
-			echo "<li><a href='logout.php'>logout</li>";
+			echo "<li><a href='papers.php?id=1'>papers</a></li>";
+			echo "<li><a href='logout.php'>logout</a></li>";
 			}
 			?>
 		</ul>

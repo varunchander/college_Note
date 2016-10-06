@@ -1,11 +1,11 @@
 <?php
 session_start();
+require "nanobar.php";
 ?>
 <!DOCTYPE HTML>
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Calendar - Academy Website Template</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
  	<meta name="viewport" content="width=device-width, initial-scale=1">
   	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -44,15 +44,15 @@ session_start();
 
 			?>
 			<?php if(isset($_SESSION['username']) || isset($_SESSION['admin'])){
-			echo "<li><a href='papers.html'>papers</a></li>";
-			echo "<li><a href='logout.php'>logout</li>";
+			echo "<li><a href='papers.php?id=1'>papers</a></li>";
+			echo "<li><a href='logout.php'>logout</a></li>";
 			}
 			?>
 		</ul>
 	</div>
 	<div id="body">
 		<div class="content">
-			<h3>Calendar 2012: This is just a place holder.</h3>
+			<br>
 			<?php 
 				if(isset($_SESSION['admin']) || isset($_SESSION['username'])){
 				if(isset($_SESSION['permit'])){
