@@ -20,6 +20,7 @@ if($extension=="pdf"){
 	if($conn->query($sql) === TRUE){
 					//echo "inserted";
 		include 'sendingmail.php';
+		header('Location: calendar.php');
 	}
 	else{
 		echo 'error occured';
@@ -35,7 +36,8 @@ $sql = "INSERT INTO upload VALUES('','$file_name','$file','$year')";
 				
 	if($conn->query($sql) === TRUE){
 					//echo "inserted";
-		//include 'sendingmail.php';
+		include 'sendingmail.php';
+		header('Location:calendar.php');
 	}
 	else
 		{
@@ -44,7 +46,7 @@ $sql = "INSERT INTO upload VALUES('','$file_name','$file','$year')";
 		}
 	}
 }
-?>
+?><!-- 
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,4 +60,4 @@ $sql = "INSERT INTO upload VALUES('','$file_name','$file','$year')";
  <input type="submit" value="submit" name="upload">
  </form>
 </body>
-</html>
+</html> -->

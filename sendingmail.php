@@ -1,11 +1,13 @@
 <?php
 require 'PHPMailer-master/PHPMailerAutoload.php';
 
+== enter your gmail adress and password here to use it or exploit it==
+
 define('GUSER', 'rahulyadav5117@gmail.com'); // GMail username
-define('GPWD', '9173390746'); // GMail password
+define('GPWD', ''); // GMail password
 $sender_gmail = GUSER;
-$subject = 'New Post';
-$message = 'welcome';
+$subject = 'College Note Notification';
+$message = 'New Posts have been uploaded in college note check the website for further details ';
 $sender_name = 'admin';
 
 $conn = new mysqli("localhost","root","","co_blog_reg");
@@ -19,7 +21,7 @@ $to = $row['email'];
 //$to = "varunchander96@gmail.com";
 echo $to;
 //call for function with parameter
-//smtpmailer($to,GUSER, $sender_name, $subject, $message);
+smtpmailer($to,GUSER, $sender_name, $subject, $message);
 }
 
 function smtpmailer($to, $from, $from_name, $subject, $body) { 

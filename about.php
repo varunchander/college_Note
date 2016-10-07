@@ -12,8 +12,9 @@ require "nanobar.php";
 	ul.a {
     list-style-type: circle;
 }
+
 </style>
-<body>
+<body id="about">
 	<div id="header">
 		<center><p style="font-size:45px;">College Note</p></center>
 		<ul>
@@ -38,7 +39,7 @@ require "nanobar.php";
 			}
 			 
 			if(!(isset($_SESSION['username']) || isset($_SESSION['admin']))){
-			echo "<li><a href='login.html'>login</a></li>"; // admin by user check
+			echo "<li><a href='login.php'>login</a></li>"; // admin by user check
 			echo "<li><a href='register.html'>register</a></li>";
 			}
 			?>
@@ -49,8 +50,15 @@ require "nanobar.php";
 			?>
 		</ul>
 	</div>
-	<div id="body">
+	<div id="body" style="height: 500px;">
 		<div class="content">
+			<div style="text-align: center; vertical-align: center; font-size: 36px;">
+			<span>SIMPLE & INCREDIBLE.<br>
+			COLLEGE NOTE IS HERE</span>
+			</div>
+			<div style="text-align: center; padding: 20px; font-size: 32px;">
+			About College Note
+			</div>
 			<h3>Why College Note ?</h3>
 			<p>
 			<ul class='a'>
@@ -68,20 +76,9 @@ require "nanobar.php";
 		</div>
 	</div>
 	<div id="footer">
-		<div>
-			<ul>
-				<li class="twitter">
-					<a href="http://freewebsitetemplates.com/go/twitter/">twitter</a>
-				</li>
-				<li class="facebook">
-					<a href="http://freewebsitetemplates.com/go/facebook/">facebook</a>
-				</li>
-				<li class="googleplus">
-					<a href="http://freewebsitetemplates.com/go/googleplus/">googleplus</a>
-				</li>
-			</ul>
+		<div >
 			<p>
-				&copy; Copyright 2012. All rights reserved
+				&copy; Copyright 2016. All rights reserved
 			</p>
 		</div>
 	</div>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="map" style="width:100%;height:500px"></div>
+
+<script>
+function myMap() {
+  var myCenter = new google.maps.LatLng(21.167539, 72.785545);
+  var mapCanvas = document.getElementById("map");
+  var mapOptions = {center: myCenter, zoom: 15};
+  var map = new google.maps.Map(mapCanvas, mapOptions);
+  var marker = new google.maps.Marker({position:myCenter,
+  animation: google.maps.Animation.BOUNCE,
+  title: 'coders'
+});
+  marker.setMap(map);
+
+  var infowindow = new google.maps.InfoWindow({
+    content: "Always available for you"
+  });
+  infowindow.open(map,marker);
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3djrdd8XdEVw6GZTo9qRTzZh30l1Xm_Q&callback=myMap"></script>
+
+</body>
+</html>

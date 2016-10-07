@@ -32,8 +32,57 @@ else if ($admin == $username && $pass == $password){
 	header('Location:index.php');
 }
 else {
-	header('Location:login.html?status=1&');
+	header('Location:login.php?status=1');
 	echo "some problem".mysql_error();
 }
 }
+else{
+?>
+
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/login.css">
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+</head>
+<body id ='login' style="margin-top: 200px;">
+<div class="container">
+    <div class="row">
+		<div class="col-md-6 col-md-offset-3">
+    		<div class="panel panel-default">
+			  	<div class="panel-heading">
+			    	<h3 class="panel-title center">Welcome - Please sign in<span class="right"><a style="text-decoration: none;" href="index.php">x</a></span></h3>
+			 	</div>
+			 	   
+			  	<div class="panel-body">
+			    	<form accept-charset="UTF-8" role="form" action="login.php" method="post">
+                    <fieldset>
+                    <?php if(isset($_GET['status'])){
+                    		echo "<p style='color:red'>*Invalid username or password</p>";
+                    	}
+                    ?>
+                  	  	<div class="form-group">
+			    		    <input class="form-control" placeholder="username" autofocus pattern ="[a-zA-Z0-9@_]{3,15}" name="username" type="text" required>
+			    		</div>
+			    		<div class="form-group">
+			    			<input class="form-control" placeholder="Password" pattern ="[a-zA-Z0-9@_]{3,15}" name="password" type="password" required>
+			    		</div>
+			    		<input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
+			    	</fieldset>
+			      	</form>
+			    </div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
+
+<?php 
+}
+
 ?>

@@ -46,7 +46,7 @@ $result = $conn->query($query);
       }
 
       if((isset($_SESSION['username']) || isset($_SESSION['admin']))) {
-      echo "<li><a href='login.html'>login</a></li>"; // admin by user check
+      echo "<li><a href='login.php'>login</a></li>"; // admin by user check
       echo "<li><a href='register.html'>register</a></li>";
       }
 
@@ -77,7 +77,7 @@ $result = $conn->query($query);
             <div class="row">
               <div class="col l6 s12">
                 <h5 class="white-text">Final Year Papers</h5>
-                <p class="grey-text text-lighten-4">You can download your papers for <?php echo $year_id ?> year.</p>
+                <p class="grey-text text-lighten-4">You can check the papers for <?php echo $year_id ?> year.</p>
               </div>
              
 
@@ -102,6 +102,21 @@ $result = $conn->query($query);
         </footer>
     
 			<br>
-<a style="position: absolute;right: 250px;" class="waves-effect waves-light btn" href="assignmentupload.php" >Upload Papers</a>
+      <script>
+        function show(){
+          document.getElementById('display').style.display="block";
+        }
+      </script>
+<button style="position: absolute;right: 250px;" class="waves-effect waves-light btn" onclick='show()' >Upload Papers</button>
+
+<div id='display' style="display: none;" >
+<form action="assignmentupload.php" method="post" enctype="multipart/form-data">
+ <input type="file" value="" name="assignment" required>upload
+<br>
+ Year_Of_Postage:<input type="text" name="year" style="width: 400px;" required>
+ <br>
+ <input type="submit" value="submit" name="upload">
+ </form>
+</div>
 </body>
 </html>

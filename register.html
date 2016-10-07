@@ -11,70 +11,76 @@ require "nanobar.php";
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
 <script type="text/javascript">
   function password_check(){
-    var x = document.forms["register"]["password"].value;
-    if(x == null || x == " "){
-      alert("password has to be filled");
+    var x = document.forms["register"]["pass_word"].value;
+ //   alert(x);
+    var y = document.forms["register"]["pass_word_confirmation"].value;
+   // alert(y);
+    if(x != y){
+      alert('mismatch of passwords occurs check those');
+      return false;
+    }else{
+      return true;
     }
-  }
-</script>
-</head>
-<body id="register">
-<div class="container" style="margin-top:30px">
-<div class="col-md-10 col-md-offset-1">
-    <div class="panel panel-default">
-  <div class="panel-heading center"><h3 class="panel-title"><strong>REGISTER</strong><span class="right"><a style="text-decoration: none;" href="index.php">x</a></span></h3>
-  </div>
-  
-  <div class="panel-body">
-   <form role="form" name="register" action="register.php" method="post">
+    }
+    </script>
+    </head>
+    <body id="register">
+    <div class="container" style="margin-top:30px">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-default">
+      <div class="panel-heading center"><h3 class="panel-title"><strong>REGISTER</strong><span class="right"><a style="text-decoration: none;" href="index.php">x</a></span></h3>
+      </div>
+      
+      <div class="panel-body">
+       <form role="form" name="register" action="register.php" method="post" onsubmit="return password_check()" >
 <!--    <div class="alert alert-danger">
                 <a class="close" data-dismiss="alert" href="#">×</a>Incorrect Username or Password!
             </div> -->
            
     			<div class="col-xs-12 col-sm-4 col-md-4">
 					<div class="form-group">
-                        <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name" tabindex="1" autofocus required>
+                        <input type="text" name="first_name" id="first_name" class="form-control" pattern ="[a-zA-Z]{1,10}" placeholder="First Name" tabindex="1" autofocus required>
 					</div>
 				</div>
                 <div class="col-xs-12 col-sm-4 col-md-4">
     				<div class="form-group">
-                        <input type="text" name="middle_name" id="middle_name" class="form-control" placeholder="Middle Name" tabindex="1"  required>
+                        <input type="text" name="middle_name" id="middle_name" class="form-control" pattern ="[a-zA-Z]{1,10}" placeholder="Middle Name" tabindex="1"  required>
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-4">
 					<div class="form-group">
-						<input type="text" name="last_name" id="last_name" class="form-control " placeholder="Last Name" tabindex="2" required>
+						<input type="text" name="last_name" id="last_name" class="form-control" pattern ="[a-zA-Z]{1,10}" placeholder="Last Name" tabindex="2" required>
 					</div>
 				</div>
 		    <div class="col-xs-12 col-sm-6 col-md-6">
 			<div class="form-group">
-				<input type="text" name="user_name" id="display_name" class="form-control " placeholder="User Name" tabindex="3" required>
+				<input type="text" name="user_name" id="display_name" class="form-control" pattern ="[a-zA-Z0-9@_]{6,15}" placeholder="User Name" tabindex="3" required>
 			</div>
       </div>
      <div class="col-xs-12 col-sm-6 col-md-6">
       <div class="form-group">
-        <input type="text" name="year" id="year" class="form-control " placeholder="Year" tabindex="3" required>
+        <input type="text" name="year" id="year" class="form-control " placeholder="Year" pattern ="[1-4]{1}" tabindex="3" required>
        </div>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-12">
 			<div class="form-group">
-				<input type="email" name="email" id="email" class="form-control " placeholder="Email Address" tabindex="4" required>
+				<input type="email" name="email" id="email" class="form-control" placeholder="Email Address" tabindex="4" required>
 			</div>
       </div>
 
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<input type="password" name="pass_word" id="password" class="form-control " placeholder="Password" tabindex="5" required>
+						<input type="password" name="pass_word" id="password" required pattern ="[a-zA-Z0-9@_]{6,15}" class="form-control " placeholder="Password" tabindex="5" required>
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<input type="password" name="password_confirmation" id="password_confirmation" class="form-control " placeholder="Confirm Password" tabindex="6" onclick="password_check()" required> 
+						<input type="password" name="pass_word_confirmation" id="password_confirmation" class="form-control " placeholder="Confirm Password" tabindex="6" required pattern ="[a-zA-Z0-9@_]{6,15}" required> 
 					</div>
 				</div>
 
   <div class="form-group center">           
-  <button type="submit" class="btn btn-success" style="margin-top: 20px;">Sign in</button>
+  <button type="submit" class="btn btn-success"   style="margin-top: 20px;">Sign in</button>
   </div>
 
   <hr style="margin-top:10px;margin-bottom:10px;" >

@@ -45,7 +45,7 @@ else{
 			}
 			 
 			if(!(isset($_SESSION['username']) || isset($_SESSION['admin']))){
-			echo "<li><a href='login.html'>login</a></li>"; // admin by user check
+			echo "<li><a href='login.php'>login</a></li>"; // admin by user check
 			echo "<li><a href='register.html'>register</a></li>";
 			}
 			?>
@@ -61,7 +61,7 @@ else{
 			<h3><center><b><u>All the posts related to <?php echo $year ?> year students</u></b></center></h3>
 			<ul class="article">
 			 	<?php
-				$months = array("January","February","March","April","May","June","July","August","September","October","November","December");
+				$months = array("","January","February","March","April","May","June","July","August","September","October","November","December");
 				$user = 'root';
 				$pwd = '';
 				$db1=mysql_connect('localhost',$user,$pwd) or die('unable to connect to database');
@@ -109,19 +109,9 @@ else{
 
 	<div id="footer">
 		<div>
-			<ul>
-				<li class="twitter">
-					<a href="http://freewebsitetemplates.com/go/twitter/">twitter</a>
-				</li>
-				<li class="facebook">
-					<a href="http://freewebsitetemplates.com/go/facebook/">facebook</a>
-				</li>
-				<li class="googleplus">
-					<a href="http://freewebsitetemplates.com/go/googleplus/">googleplus</a>
-				</li>
-			</ul>
+			
 			<p>
-				&copy; Copyright 2012. All rights reserved
+				&copy; Copyright 2016. All rights reserved
 			</p>
 		</div>
 	</div>

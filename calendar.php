@@ -38,7 +38,7 @@ require "nanobar.php";
 			}
 
 			if(!(isset($_SESSION['username']) || isset($_SESSION['admin']))) {
-			echo "<li><a href='login.html'>login</a></li>"; // admin by user check
+			echo "<li><a href='login.php'>login</a></li>"; // admin by user check
 			echo "<li><a href='register.html'>register</a></li>";
 			}
 
@@ -65,7 +65,7 @@ require "nanobar.php";
     		?>
 			<ul class="article">
 				<?php
-				$months = array("January","February","March","April","May","June","July","August","September","October","November","December");
+				$months = array("","January","February","March","April","May","June","July","August","September","October","November","December");
 				$user = 'root';
 				$pwd = '';
 				$db1=mysql_connect('localhost',$user,$pwd) or die('unable to connect to database');
@@ -91,6 +91,9 @@ require "nanobar.php";
 				$timer = explode("-", $timer);
 				echo "</a><div><h3>".$row['title']."</h3><p>".$row['detail']."</p><span><b>date</b>: ".$months[$timer[1]]." ".$timer[2].",".$timer[0]." </span>";
 				echo "<span><b>Venue</b>: ".strtoupper($row['venue'])."</span>";
+				if(isset($_SESSION['admin'])){
+				echo "<a href='delete.php?id=$img_id' style='float:right;'><u>DELETE POST</u></a>";
+				}
 				echo "</div></li>";
 				}
 				?>
@@ -112,19 +115,8 @@ require "nanobar.php";
 	</div>
 	<div id="footer">
 		<div>
-			<ul>
-				<li class="twitter">
-					<a href="http://freewebsitetemplates.com/go/twitter/">twitter</a>
-				</li>
-				<li class="facebook">
-					<a href="http://freewebsitetemplates.com/go/facebook/">facebook</a>
-				</li>
-				<li class="googleplus">
-					<a href="http://freewebsitetemplates.com/go/googleplus/">googleplus</a>
-				</li>
-			</ul>
 			<p>
-				&copy; Copyright 2012. All rights reserved
+				&copy; Copyright 2016. All rights reserved
 			</p>
 		</div>
 	</div>

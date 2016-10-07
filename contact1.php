@@ -30,21 +30,21 @@ session_start();
 			</li>
 			<?php 
 			if(!(isset($_SESSION['username']) || isset($_SESSION['admin']) )){
-			echo "<li><a href='login.php'>login</a></li>"; // admin by user check
+			echo "<li><a href='login.html'>login</a></li>"; // admin by user check
 			echo "<li><a href='register.html'>register</a></li>";
 			}
 			?>
 			<?php if(isset($_SESSION['username']) || isset($_SESSION['admin'])){
-			echo "<li><a href='papers.php?id=1'>papers</a></li>";
-			echo "<li><a href='logout.php'>logout</a></li>";
+			echo "<li><a href='papers.html'>papers</a></li>";
+			echo "<li><a href='logout.php'>logout</li>";
 			}
 			?>
 		</ul>
 	</div>
 	<div >
 		<?php 
-		  echo "<center><h3>Location of Office:</h3></center><center>SVNIT,Ichchanath,Surat-395007,Gujarat</center>";
-		  require "mapapi.html" ;
+		echo "<h3>Location of our office</h3>";
+		require "mapapi.html" ;
 		 ?>
 	</div>
 	<div id="footer">

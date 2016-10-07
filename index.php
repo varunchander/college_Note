@@ -33,7 +33,7 @@ require "nanobar.php";
 			echo "<li><a href='contact.php'>contact</a></li>";
 			}
 			if(!(isset($_SESSION['username']) || isset($_SESSION['admin']))){
-			echo "<li><a href='login.html'>login</a></li>"; // admin by user check
+			echo "<li><a href='login.php'>login</a></li>"; // admin by user check
 			echo "<li><a href='register.html'>register</a></li>";
 			}
 			?>
@@ -55,7 +55,7 @@ require "nanobar.php";
 				$pwd = '';
 				$db1=mysql_connect('localhost',$user,$pwd) or die('unable to connect to database');
 				mysql_select_db('co_blog_reg') or die(mysql_error());
-				$query = "select * from notify_img order by time limit 3";
+				$query = "select * from notify_img order by time_sec desc limit 3";
 				$result = mysql_query($query);
 				while($row = mysql_fetch_array($result)){
 				$img_id = $row["id"];
@@ -63,7 +63,7 @@ require "nanobar.php";
 				?>
 				 <img id="img_call" src="img.php?id=<?php echo $img_id ?>" />
 				<?php
-				echo "<a href='#'><b>".$row['title']."</b><span>Click to check the content</span></a></li>";	
+				echo "<a href='calendar.php'><b>".$row['title']."</b><span>Click to check the content</span></a></li>";	
 				}
 				?>
 			
@@ -74,28 +74,9 @@ require "nanobar.php";
 			
 		</div></a>
 		<div class="footer">
-			<div class="blog">
-				<h3><a href="">blog</a></h3>
-				<ul>
-					<li>
-						<p>
-							<a href="calendar.html">This is just a place holder, so you can see what the site would look like. by: Rose</a>
-						</p>
-					</li>
-					<li>
-						<p>
-							<a href="calendar.html">This website template has been designed by Free Website Templates for you, for free. by: Rose</a>
-						</p>
-					</li>
-					<li>
-						<p>
-							<a href="calendar.html">This is just a place holder, so you can see what the site would look like. by: Rose</a>
-						</p>
-					</li>
-				</ul>
-			</div>
+	
 			<div class="article">
-				<h3><a href="">calendar</a></h3>
+				<h3><a href="calendar.php">calendar</a></h3>
 				<ul>
 					<?php
 						$months = array("jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec");
@@ -116,19 +97,8 @@ require "nanobar.php";
 	</div>
 	<div id="footer">
 		<div>
-			<ul>
-				<li class="twitter">
-					<a href="#">twitter</a>
-				</li>
-				<li class="facebook">
-					<a href="#">facebook</a>
-				</li>
-				<li class="googleplus">
-					<a href="#">googleplus</a>
-				</li>
-			</ul>
 			<p>
-				&copy; Copyright 2012. All rights reserved
+				&copy; Copyright 2016. All rights reserved
 			</p>
 		</div>
 	</div>

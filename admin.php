@@ -59,7 +59,7 @@ session_start();
 			}
 
 			if(!(isset($_SESSION['username']) || isset($_SESSION['admin']))) {
-			echo "<li><a href='login.html'>login</a></li>"; // admin by user check
+			echo "<li><a href='login.php'>login</a></li>"; // admin by user check
 			echo "<li><a href='register.html'>register</a></li>";
 			}
 
@@ -72,7 +72,7 @@ session_start();
 		</ul>
 	</div>
 	<div id="body" >
-		<div class="content">
+		<div class="content" style='width: 1100px;'>
 		<?php
 			$query = "select * from register";
 			$result = mysql_query($query);
@@ -90,13 +90,13 @@ session_start();
 				echo "<td>".$row["created_date"]."</td>";
 				echo "<form  class='form-horizontal' role='form' action='admin.php' method='get'>";
 				echo "<div class='form-group'>";
-          		echo "<div class='col-sm-offset-6 col-sm-10'><td>";
+          		echo "<div class='col-sm-offset-4 col-sm-7'><td>";
 		  		echo "<input type='hidden' name='permit' value=".$row['ID'].">";
 				if(!$row['permit']){
 					echo "<button type='submit' style='position:relative;' class='btn btn-default'>NO_PERMIT</button></td>";
 				}
 				else{
-					  echo "<button type='submit' style='position:relative;' class='btn btn-default'>PERMIT</button></td>";
+					  echo "<button type='submit' style='position:relative;padding-left:45px;' class='btn btn-default'>PERMIT</button></td>";
 				}
 				echo '</div></div></form></tr>';
 			}

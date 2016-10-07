@@ -4,9 +4,18 @@
 	<title>nanobar</title>
 </head>
 <body>
+<style>
+	.bar{
+		background: #ff0000;
+		transition: height .5s;
+	}
+	.nanobar{
+		height: 2px;
+	}
+</style>
 <script type="text/javascript" src="nanobar-master/nanobar.js"></script>
 <script type="text/javascript">
-	
+
 	var options = {
   classname: 'container',
   id: 'nanobar',
