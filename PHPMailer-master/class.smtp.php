@@ -141,7 +141,7 @@ class SMTP
      * @link http://tools.ietf.org/html/rfc2821#section-4.5.3.2
      * @var integer
      */
-    public $Timeout = 300;
+    public $Timeout = 3000;
 
     /**
      * How long to wait for commands to complete, in seconds.

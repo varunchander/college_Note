@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>nanobar</title>
+	<title>College_Note</title>
+		<link rel="icon" type="image/png" href="favicon.ico">
 </head>
 <body>
 <style>

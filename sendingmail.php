@@ -1,27 +1,48 @@
 <?php
 require 'PHPMailer-master/PHPMailerAutoload.php';
 
-== enter your gmail adress and password here to use it or exploit it==
-
-define('GUSER', 'rahulyadav5117@gmail.com'); // GMail username
+define('GUSER', ''); // GMail username
 define('GPWD', ''); // GMail password
 $sender_gmail = GUSER;
 $subject = 'College Note Notification';
-$message = 'New Posts have been uploaded in college note check the website for further details ';
+
 $sender_name = 'admin';
 
 $conn = new mysqli("localhost","root","","co_blog_reg");
 
-$sql = "SELECT email FROM register";
+$sql = "SELECT * FROM register";
 
 $result = $conn->query($sql);
 
+// for text messages
+while($row = $result->fetch_assoc()){
+$to = $row['phoneno'];
+//$to = "varunchander96@gmail.com";
+//echo $to;
+//call for function with parameter
+$to .= "@sms.textlocal.in" ;
+//echo $to ;
+
+	$message = "#%#New Posts have been uploaded in college note check the website for further details##";
+
+	smtpmailer($to,GUSER, $sender_name, $subject, $message);
+
+}
+$result = $conn->query($sql);
+// for emails
 while($row = $result->fetch_assoc()){
 $to = $row['email'];
 //$to = "varunchander96@gmail.com";
-echo $to;
+//echo $to;
 //call for function with parameter
-smtpmailer($to,GUSER, $sender_name, $subject, $message);
+if($row['emailpermit']){
+	$id = $row['ID'];
+	$message = "<html><body>";
+	$message .= "<p>New Posts have been uploaded in college note check the website for further details</p>";
+	$message .= "<a href='http://localhost/soft_2_note/unsubscribe.php?id=$id'>unsubscribe</a>";
+
+	smtpmailer($to,GUSER, $sender_name, $subject, $message);
+}
 }
 
 function smtpmailer($to, $from, $from_name, $subject, $body) { 
@@ -29,6 +50,7 @@ function smtpmailer($to, $from, $from_name, $subject, $body) {
 	global $error;
 	$mail = new PHPMailer();  // create a new object
 	$mail->IsSMTP(); // enable SMTP
+	$mail->isHTML(true);
 	$mail->SMTPDebug = 0;  // debugging: 1 = errors and messages, 2 = messages only
 	$mail->SMTPAuth = true;  // authentication enabled
 	$mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for GMail

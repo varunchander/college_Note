@@ -11,7 +11,6 @@ $year = $_POST['year'];
 $conn = new mysqli("localhost","root","","co_blog_reg");
 
 $extension = strtolower(end(explode('.',$file_name)));
-echo $extension;
 if($extension=="pdf"){
 	move_uploaded_file($file_loc, "images/".$file_name);
 

@@ -79,7 +79,7 @@ require "nanobar.php";
 				<h3><a href="calendar.php">calendar</a></h3>
 				<ul>
 					<?php
-						$months = array("jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec");
+						$months = array("","jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec");
 						$query = "select * from notify_img order by time desc limit 3";
 						$result = mysql_query($query) or die(mysql_error());
 						while($row = mysql_fetch_array($result)){

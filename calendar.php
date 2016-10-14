@@ -92,13 +92,23 @@ require "nanobar.php";
 				echo "</a><div><h3>".$row['title']."</h3><p>".$row['detail']."</p><span><b>date</b>: ".$months[$timer[1]]." ".$timer[2].",".$timer[0]." </span>";
 				echo "<span><b>Venue</b>: ".strtoupper($row['venue'])."</span>";
 				if(isset($_SESSION['admin'])){
-				echo "<a href='delete.php?id=$img_id' style='float:right;'><u>DELETE POST</u></a>";
+				echo "<a href='delete.php?id=$img_id' style='float:right;' onclick='return ConfirmDelete()'><u>DELETE POST</u></a>";
 				}
 				echo "</div></li>";
 				}
 				?>
 			</ul>
 		</div>
+		<script>
+		function ConfirmDelete()
+			{
+			  var x = confirm("Are you sure you want to delete?");
+			  if (x)
+      			return true;
+			  else
+    			return false;
+				}
+		</script>
 		<div class="container">
 			  	<center><ul class="pagination">
 			  	<?php

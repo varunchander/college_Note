@@ -44,7 +44,7 @@ else{
 if(! $status){
  	die('could not enter the data '.mysql_error());
  }
- header("Location: login.html");
+ header("Location: login.php");
  }
 }
 ?>
